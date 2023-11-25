@@ -17,6 +17,8 @@ namespace ToDo.Web
 
             services.AddSwaggerGen();
 
+            services.AddExceptionHandler<CustomExceptionHandler>();
+
             return services;
         }
     }

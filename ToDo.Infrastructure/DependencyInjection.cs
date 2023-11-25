@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ToDo.Application.Common.Interfaces;
 using ToDo.Infrastructure.Data;
 
 namespace ToDo.Infrastructure
@@ -12,6 +13,8 @@ namespace ToDo.Infrastructure
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
+
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
             return services;
         }
