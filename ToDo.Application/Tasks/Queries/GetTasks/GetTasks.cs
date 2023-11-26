@@ -2,7 +2,6 @@
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 using ToDo.Application.Common.Interfaces;
 
 namespace ToDo.Application.Tasks.Queries.GetTasks

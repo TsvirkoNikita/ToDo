@@ -5,9 +5,16 @@ using ToDo.Domain.Entities;
 
 namespace ToDo.Infrastructure.Data
 {
-    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options), IApplicationDbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
-        public DbSet<TaskEntity> Tasks => Set<TaskEntity>();
+        public virtual DbSet<TaskEntity> Tasks => Set<TaskEntity>();
+
+        public ApplicationDbContext() { }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
