@@ -15,6 +15,7 @@ namespace ToDo.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
 
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+            services.AddScoped<ApplicationDbContextInitialiser>();
 
             return services;
         }

@@ -1,5 +1,6 @@
 using ToDo.Application;
 using ToDo.Infrastructure;
+using ToDo.Infrastructure.Data;
 using ToDo.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,11 @@ app.UseStaticFiles();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    using var scope = app.Services.CreateScope();
+    var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
+    await initialiser.InitialiseAsync();
+    await initialiser.SeedAsync();
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
