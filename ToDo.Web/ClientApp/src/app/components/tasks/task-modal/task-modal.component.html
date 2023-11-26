@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ task ? "Edit Task" : "Add Task" }}</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+<div class="modal-body">
+  <form
+    class="form"
+    id="task-form"
+    [formGroup]="taskForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <label>Title</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="title"
+        maxlength="100"
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          (taskFormControls.title.touched || submitted) &&
+          taskFormControls.title.errors?.required
+        "
+      >
+        Title is required
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea
+        type="text"
+        class="form-control"
+        formControlName="description"
+        maxlength="200"
+      ></textarea>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+  >
+    Close
+  </button>
+  <button type="submit" form="task-form" class="btn btn-primary">Save</button>
+</div>
