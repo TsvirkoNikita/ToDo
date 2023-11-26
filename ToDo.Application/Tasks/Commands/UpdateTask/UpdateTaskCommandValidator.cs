@@ -14,8 +14,7 @@ namespace ToDo.Application.Tasks.Commands.UpdateTask
                 .NotEmpty();
 
             RuleFor(t => t.Description)
-                .MaximumLength(200)
-                .NotEmpty();
+                .MaximumLength(200);
         }
     }
 }

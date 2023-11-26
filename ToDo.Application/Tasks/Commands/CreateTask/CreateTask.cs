@@ -19,6 +19,7 @@ namespace ToDo.Application.Tasks.Commands.CreateTask
             var entity = new TaskEntity
             {
                 Title = request.Title,
+                Description = request.Description
             };
 
             _context.Tasks.Add(entity);
